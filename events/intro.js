@@ -5,7 +5,7 @@ module.exports = client => {
     }
 
     if (message.channel.id === '863467182061912065') {
-    
+
       let raw = message.content.split('\n');
       let name = '';
       let domisili = '';
@@ -13,7 +13,7 @@ module.exports = client => {
       let institusi = '';
       let hobi = '';
       let referral = '';
-    
+
       for (let data of raw) {
         data = data.split('?');
         if ((data[0]).toLowerCase() == 'siapa nama kamu') {
@@ -34,8 +34,8 @@ module.exports = client => {
       if (name === '' || domisili === '' || profesi === '' || institusi === '' || hobi === '' || referral === '') {
         if (message.author.bot) return;
         await message.react('❌');
-        const wrong = await message.channel.send(`Tolong memperkenalkan diri sesuai format yang dipin yah!`);
-        
+        const wrong = await message.channel.send(`Tolong memperkenalkan diri sesuai format yang ada di kanal #🙋┃welcome-and-rules yah!`);
+
         await sleep(5000);
         await message.delete();
         await wrong.delete();
