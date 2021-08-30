@@ -26,7 +26,7 @@ module.exports = client => {
           institusi = data[1];
         } else if ((data[0]).toLowerCase() == 'apa hobi kamu') {
           hobi = data[1];
-        } else if ((data[0]).toLowerCase() == 'darimana kamu tahu tentang akademikode') {
+        } else if ((data[0]).toLowerCase() == 'darimana kamu tahu tentang Akademikode') {
           referral = data[1];
         }
       }
