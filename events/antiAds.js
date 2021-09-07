@@ -34,7 +34,7 @@ module.exports = client => {
         }
       }
     } else {
-      if (message.channel.name !== '🔗┃link' && message.channel.name !== '💻┃project-show-off' && message.channel.name !== '🔔┃info-course' && message.channel.name !== '🔔┃info-bootcamp' && message.channel.name !== '🔔┃info-webinar' && message.channel.name !== '🔔┃info-contest' && message.channel.name !== '🔔┃info-loker') {
+      if (message.channel.name !== '🔗┃link' && message.channel.name !== '💻┃project-show-off' && message.channel.name !== '🔔┃info-course' && message.channel.name !== '🔔┃info-bootcamp' && message.channel.name !== '🔔┃info-webinar' && message.channel.name !== '🔔┃info-workshop' && message.channel.name !== '🔔┃info-contest' && message.channel.name !== '🔔┃info-loker') {
         if (content.includes('https://www.discord.gg/') || content.includes('http://www.discord.gg/') || content.includes('www.discord.gg/') || content.includes('discord.gg/')) {
           const isOurInvite = await isInvite(guild, code);
 
