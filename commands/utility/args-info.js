@@ -4,6 +4,8 @@ module.exports = {
   args: true,
   cooldown: 5,
   execute(message, args) {
-    message.channel.send(`Nama perintah: args-info\nArgumen: ${args}\nPanjang argumen: ${args.length}`);
+    message.channel.send(
+      `Nama perintah: args-info\nArgumen: ${args}\nPanjang argumen: ${args.length}`
+      );
   }
 }

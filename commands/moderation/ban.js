@@ -11,17 +11,14 @@ module.exports = {
       const member = message.guild.member(user);
 
       if (member) {
-        member
-          .ban({
-            reason: 'Melanggar aturan!'
-          })
-          .then(() => {
-            message.reply(`${user.tag} berhasil di-ban!`)
-          })
-          .catch(err => {
-            message.reply('Aku tidak bisa melakukan ban member tersebut!');
-            console.error(err);
-          });
+        member.ban({
+          reason: 'Melanggar aturan!'
+        }).then(() => {
+          message.reply(`${user.tag} berhasil di-ban!`)
+        }).catch(err => {
+          message.reply('Aku tidak bisa melakukan ban member tersebut!');
+          console.error(err);
+        });
       } else {
         message.reply('User tersebut tidak ada di server ini!');
       }

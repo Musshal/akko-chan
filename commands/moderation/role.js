@@ -10,42 +10,42 @@ module.exports = {
     const roleName = args[1];
 
     if (choice === 'give') {
-      const { guild } = message;
+      const {
+        guild
+      } = message;
       const role = guild.roles.cache.find(role => {
         return role.name === roleName;
       });
 
       if (!role) {
         message.reply(`tolong sebutkan nama role yang terdaftar!`);
-
         return;
       }
 
       if (!targetUser) {
-        message.reply('tolong sebutkan member yang ingin diberikan role dengan benar!');
-        
+        message.reply(
+          'tolong sebutkan member yang ingin diberikan role dengan benar!');
         return;
       }
-      
-      const member = guild.members.cache.get(targetUser.id);
-      member.roles.add(role);
 
-      message.reply(`role ${roleName} berhasil ditambahkan ke member ${targetUser}`);
+      const member = guild.members.cache.get(targetUser.id);
+
+      member.roles.add(role);
+      message.reply(
+        `role ${roleName} berhasil ditambahkan ke member ${targetUser}`);
     } else if (choice === 'remove') {
-      const { guild } = message;
+      const {
+        guild
+      } = message;
       const role = guild.roles.cache.find(role => {
         return role.name === roleName;
       });
-
       if (!role) {
         message.reply(`tolong sebutkan nama role yang ingin dihapus!`);
-
         return;
       }
-
       if (!targetUser) {
         message.reply('tolong sebutkan member yang ingin dihapus role-nya!');
-        
         return;
       }
 
@@ -53,25 +53,25 @@ module.exports = {
 
       if (member.roles.cache.get(role.id)) {
         member.roles.remove(role);
-        message.reply(`role ${roleName} telah dihapus dari member ${targetUser}!`);
+        message.reply(
+          `role ${roleName} telah dihapus dari member ${targetUser}!`);
       } else {
         message.reply(`member tersebut tidak mempunyai role ${roleName}!`);
       }
-    } else if (choice === 'has'){
-      const { guild } = message;
+    } else if (choice === 'has') {
+      const {
+        guild
+      } = message;
       const role = guild.roles.cache.find(role => {
         return role.name === roleName;
       });
 
       if (!role) {
         message.reply(`tolong sebutkan nama role yang ingin dicek!`);
-
         return;
       }
-
       if (!targetUser) {
         message.reply('tolong sebutkan member yang ingin dicek role-nya!');
-        
         return;
       }
 
