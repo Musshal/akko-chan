@@ -13,7 +13,10 @@ module.exports = {
     } else {
       await message.delete();
 
-      const fetched = await message.channel.messages.fetch({ limit: 1 });
+      const fetched = await message.channel.messages.fetch({
+        limit: 1
+      });
+
       if (fetched && fetched.first()) {
         addReactions(fetched.first());
       }

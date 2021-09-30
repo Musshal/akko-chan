@@ -1,7 +1,8 @@
 const dotenv = require('dotenv').config();
 const Discord = require('discord.js'); // require the discord.js module
 const fs = require('fs');
-const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith(
+  '.js'));
 const commandFolders = fs.readdirSync('./commands');
 const {
   prefix,
@@ -25,8 +26,8 @@ for (const file of eventFiles) {
 }
 
 for (const folder of commandFolders) {
-  const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
-
+  const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file =>
+    file.endsWith('.js'));
   for (const file of commandFiles) {
     const command = require(`../commands/${folder}/${file}`);
     // set a new item in the Collection
@@ -48,29 +49,30 @@ client.on('message', message => {
 
   const args = content.slice(prefix.length).trim().split(/ +/);
   const commandName = args.shift().toLowerCase();
-
-  const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+  const command = client.commands.get(commandName) || client.commands.find(
+    cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
   if (!command) return;
-
   if (!client.commands.has(commandName)) return;
-
   if (command.guildOnly && message.channel.type === 'dm') {
-    return message.reply('Maaf yah, aku tidak bisa mengeksekusi perintah tersebut!');
+    return message.reply(
+      'Maaf yah, aku tidak bisa mengeksekusi perintah tersebut!');
   }
 
   if (command.permissions) {
     const authorPerms = message.channel.permissionsFor(message.author);
     if (!authorPerms || !authorPerms.has(command.permissions)) {
-      return message.reply('kamu tidak mempunyai hak untuk menjalankan perintah tersebut!');
+      return message.reply(
+        'kamu tidak mempunyai hak untuk menjalankan perintah tersebut!');
     }
   }
 
   if (command.args && !args.length) {
-    let reply = `Kamu harus memberikan argumen untuk menjalankan perintah tersebut, ${message.author}!`;
-
+    let reply =
+      `Kamu harus memberikan argumen untuk menjalankan perintah tersebut, ${message.author}!`;
     if (command.usage) {
-      reply += `\nPenggunaan yang layak: \`${prefix}${command.name} ${command.usage}\``;
+      reply +=
+        `\nPenggunaan yang layak: \`${prefix}${command.name} ${command.usage}\``;
     }
     return message.channel.send(reply);
   }
@@ -84,12 +86,13 @@ client.on('message', message => {
   const cooldownAmount = (command.cooldown || 3) * 1000;
 
   if (timestamps.has(message.author.id)) {
-    const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-
+    const expirationTime = timestamps.get(message.author.id) +
+      cooldownAmount;
     if (now < expirationTime) {
       const timeLeft = (expirationTime - now) / 1000;
-
-      return message.reply(`silahkan menunggu ${timeLeft.toFixed()} detik sebelum dapat menjalankan perintah \`${command.name}\` lagi.`)
+      return message.reply(
+        `silahkan menunggu ${timeLeft.toFixed()} detik sebelum dapat menjalankan perintah \`${command.name}\` lagi.`
+        )
     }
   }
 
@@ -100,8 +103,8 @@ client.on('message', message => {
     command.execute(message, args);
   } catch (error) {
     console.error(error);
-
-    message.reply('terdapat kesalahan ketika mencoba mengeksekusi perintah tersebut!');
+    message.reply(
+      'terdapat kesalahan ketika mencoba mengeksekusi perintah tersebut!');
   }
 });
 
